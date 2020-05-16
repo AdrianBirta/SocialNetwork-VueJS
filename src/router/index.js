@@ -1,23 +1,40 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Profile from "../views/Profile.vue";
+import FindFriends from '../views/FindFriends.vue';
+import Friends from '../components/Friends/Friends.vue';
+import Body from '../components/Profile/Body/Body.vue';
+import CreateEvents from '../components/CreateEvents/CreateEvents.vue';
+import Home from '../components/Home/Home.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    component: Profile, children: [
+      {
+        path: '/',
+        component: Body
+      },
+      {
+        path: '/friends',
+        component: Friends
+      }
+    ]
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    path: "/find-friends",
+    name: "FindFriends",
+    component: FindFriends
+  },
+  {
+    path: "/create-events",
+    component: CreateEvents
+  },
+  {
+    path: "/home",
+    component: Home
   }
 ];
 
