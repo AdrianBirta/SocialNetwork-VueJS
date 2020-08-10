@@ -6,6 +6,7 @@ import Friends from '../components/Friends/Friends.vue';
 import Body from '../components/Profile/Body/Body.vue';
 import CreateEvents from '../components/CreateEvents/CreateEvents.vue';
 import Home from '../components/Home/Home.vue';
+import ChangeAccount from '../components/ChangeAccount/ChangeAccount';
 
 Vue.use(VueRouter);
 
@@ -35,6 +36,10 @@ const routes = [
   {
     path: "/home",
     component: Home
+  },
+  {
+    path: '/change-account',
+    component: ChangeAccount
   }
 ];
 

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<appAddPost/>
-		<appPost v-for="post in getPosts.slice().reverse()" :post="post" :key="post.content"/>
+		<appPost v-for="post in getAllPosts.slice().reverse()" :post="post" :key="post.content"/>
 	</div>
 </template>
 
@@ -12,19 +12,14 @@
 
   export default {
     data () {
-      return {
-        posts:[]
-      }
+      return {}
     },
     components: {
     	appAddPost : AddPost,
     	appPost : Post
     },
     computed: { 
-      ...mapGetters(['getAllPosts']),
-      getPosts() {
-        return this.getAllPosts;
-    	}
+      ...mapGetters(['getAllPosts'])
     }
   }
 </script>

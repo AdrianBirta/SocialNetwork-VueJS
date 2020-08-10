@@ -8,8 +8,8 @@
 		<ul>
 			<li class="photoName">
 				<span>
-					<img src="@/assets/profile.jpg">
-					<router-link to="/">Birta</router-link>
+					<img :src="require(`@/assets/${profile.picture}`)">
+					<router-link to="/">{{lastName}}</router-link>
 				</span>
 			</li>
 			<li><router-link to="/home">Acasă</router-link></li>
@@ -38,6 +38,15 @@
 	    return {
 
 	    }
+	  },
+	  computed: {
+	  	profile() {
+	  		return this.$store.state.profile
+	  	},
+	  	lastName() {
+	  			let n = this.profile.name.split(" ");
+	  			return n[n.length - 1];
+	  	}
 	  }
 	}
 </script>

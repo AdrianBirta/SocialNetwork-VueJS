@@ -58,10 +58,10 @@
 		</div>
 		<div class="comments">
 			<div class="addedComments" v-for="(comment, index) in comments" :key="index">
-				<img src="@/assets/profile.jpg">
+				<img :src="require(`@/assets/${profile.picture}`)">
 				<div class="commentBox">
 					<span class="messageName">
-						<p><strong style="color:red;">Adrian Birta</strong> {{ comment }}</p>
+						<p><strong style="color:red;">{{profile.name}}</strong> {{ comment }}</p>
 					</span>
 					<span class="details">
 						<p>Îmi place · Răspunde </p>
@@ -69,7 +69,7 @@
 				</div>
 			</div>	
 			<div class="inputComment">
-				<img src="@/assets/profile.jpg">
+				<img :src="require(`@/assets/${profile.picture}`)">
 				<span class="commentsInput">
 					<input 
 						type="text" 
@@ -99,6 +99,11 @@ export default {
 		addComment() {
 			this.comments.push(this.comment);
 			this.comment='';
+		}
+	},
+	computed: {
+		profile() {
+			return this.$store.state.profile
 		}
 	}
 }

@@ -1,6 +1,9 @@
 <template>
   <div class="rightHomeBox">
-    <div class="playPosts"><p @click="addPosts">Start posts</p></div>
+    <span class="SpecialButtons">
+      <div class="playPosts"><p @click="addPosts">Start posts</p></div>
+      <div class="ChangeAccount"><router-link to="/change-account">Change Account</router-link></div>
+    </span>
     <div class="gamesRightHomeBox">
       <div class="headerGames">
         <p>Jocurile tale</p>
@@ -76,14 +79,14 @@ export default {
   },
   methods: {
   	addPosts() {
-  		// let interval = Math.floor(Math.random() * (15000 - 5000) + 5000)
-  		// setInterval(() => {
+  		let interval = Math.floor(Math.random() * (4000 - 3000) + 3000)
+  		setInterval(() => {
 
-  		// interval = Math.floor(Math.random() * (15000 - 5000) + 5000)
+  		interval = Math.floor(Math.random() * (4000 - 3000) + 3000)
   		
   		this.$store.dispatch('addNewFriendPost');
 
-  		// }, interval)
+  		}, interval)
   		
 
   	}
@@ -92,6 +95,27 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  .SpecialButtons {
+    display: flex;
+    align-items: center;
+  }
+  .SpecialButtons .ChangeAccount a {
+    text-decoration: none;
+    color:#fff;
+  }
+  .SpecialButtons .ChangeAccount:hover {
+    background:#f73c3c;
+  }
+  .SpecialButtons .ChangeAccount {
+    background:red;
+    color:#fff;
+    font-weight: bold;
+    padding:1rem;
+    border-radius:16px;
+    display: inline-block;
+    cursor:pointer;
+    transition:.5s;
+  }
   .bottom {
     color:gray;
     padding:1rem;

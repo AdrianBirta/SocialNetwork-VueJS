@@ -4,8 +4,8 @@
 			<p>Creează o postare</p>
 		</div>
 		<div class="addPostBody">
-			<img src="@/assets/profile.jpg">
-			<textarea @keyup.enter="addNewPost" type="text" v-model="content" placeholder="La ce te gândești, Birta?"></textarea>
+			<img :src="require(`@/assets/${profile.picture}`)">
+			<textarea @keyup.enter="addNewPost" type="text" v-model="content" :placeholder="lastName"></textarea>
 		</div>
 		<div class="addPostFooter">
 			<span>
@@ -39,6 +39,15 @@
 				this.$store.dispatch('addNewPost',this.content)
 				this.content = '';
 			}
+		},
+		computed: {
+			profile() {
+				return this.$store.state.profile
+			},
+			lastName() {
+	  			let n = this.profile.name.split(" ");
+	  			return 'La ce te gândești, ' + n[n.length - 1] + '?';
+	  		}
 		}
 	}
 </script>

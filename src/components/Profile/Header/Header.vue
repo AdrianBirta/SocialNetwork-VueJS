@@ -3,8 +3,8 @@
 		<div class="body-box">
 			<div class="topHeader">
 				<div class="topHeaderLeft">
-					<img src="../../../assets/profile.jpg" alt="">
-					<h2><router-link to="/">Adrian Birta</router-link></h2>
+					<img :src="require(`@/assets/${profile.picture}`)" alt="">
+					<h2><router-link to="/">{{ profile.name }}</router-link></h2>
 				</div>
 				<div class="topHeaderRight">
 					<div class="topHeaderRightFirst">
@@ -62,7 +62,10 @@
 			return {}
 		},
 		computed: {
-			...mapGetters(['friendsLength'])
+			...mapGetters(['friendsLength']),
+			profile() {
+		  		return this.$store.state.profile
+		  	}
 		}
 	}
 </script>

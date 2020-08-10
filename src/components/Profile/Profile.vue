@@ -19,6 +19,10 @@
 	  components: {
 	  	appHeader : Header,
 	  	// appBody: Body
+	  },
+	  created() {
+	  	this.$store.dispatch('changeProfile', this.$store.state.profile);
+	  	console.log(this.$store.state.profile);
 	  }
 	}
 </script>

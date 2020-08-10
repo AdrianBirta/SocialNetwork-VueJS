@@ -19,7 +19,7 @@
 			</span>
 		</div>
 		<div class="bodyAddPost">
-			<img src="../../../../../assets/profile.jpg">
+			<img :src="require(`@/assets/${profile.picture}`)">
 			<input type="text" placeholder="La ce te gândești?" v-model="text" @keydown.enter="addNewPost">
 
 		</div>
@@ -54,6 +54,11 @@ export default {
   	addNewPost() {
   		this.$store.dispatch('addNewPost',this.text);
   		this.text = '';
+  	}
+  },
+  computed: {
+  	profile() {
+  		return this.$store.state.profile
   	}
   }
 }

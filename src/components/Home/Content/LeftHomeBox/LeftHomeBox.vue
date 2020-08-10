@@ -3,8 +3,8 @@
 		<div class="user">
 			<div class="infoUser">
 				<span class="profileUser">
-					<img src="@/assets/profile.jpg">
-					<p>Adrian Birta</p>
+					<img :src="require(`@/assets/${profile.picture}`)">
+					<p>{{profile.name}}</p>
 				</span>
 				<span class="news">
 					<i class="far fa-newspaper"></i>
@@ -52,9 +52,12 @@
 <script>
 export default {
   data () {
-    return {
-
-    }
+    return {}
+  },
+  computed: {
+  	profile() {
+  		return this.$store.state.profile
+  	}
   }
 }
 </script>
